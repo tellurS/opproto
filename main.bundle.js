@@ -3,9 +3,52 @@ webpackJsonp([3],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(546);
-	(function webpackMissingModule() { throw new Error("Cannot find module \"/home/pdn/project/opproto/dist\""); }());
-
+	"use strict";
+	/*
+	 * Providers provided by Angular
+	 */
+	var platform_browser_dynamic_1 = __webpack_require__(355);
+	/*
+	* Platform and Environment
+	* our providers/directives/pipes
+	*/
+	var browser_1 = __webpack_require__(546);
+	var environment_1 = __webpack_require__(547);
+	/*
+	* App Component
+	* our top level component that holds all of our components
+	*/
+	var app_1 = __webpack_require__(543);
+	/*
+	 * Bootstrap our Angular app with a top level component `App` and inject
+	 * our Services and Providers into Angular's dependency injection
+	 */
+	function main(initialHmrState) {
+	    return platform_browser_dynamic_1.bootstrap(app_1.App, browser_1.PLATFORM_PROVIDERS.concat(environment_1.ENV_PROVIDERS, app_1.APP_PROVIDERS))
+	        .then(environment_1.decorateComponentRef)
+	        .catch(function (err) { return console.error(err); });
+	}
+	exports.main = main;
+	/*
+	 * Vendors
+	 * For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app
+	 * You can also import them in vendors to ensure that they are bundled in one file
+	 * Also see custom-typings.d.ts as you also need to do `typings install x` where `x` is your module
+	 */
+	/*
+	 * Hot Module Reload
+	 * experimental version by @gdi2290
+	 */
+	if (false) {
+	    // activate hot module reload
+	    var ngHmr = require('angular2-hmr');
+	    ngHmr.hotModuleReplacement(main, module);
+	}
+	else {
+	    // bootstrap when document is ready
+	    document.addEventListener('DOMContentLoaded', function () { return main(); });
+	}
+	
 
 /***/ },
 
@@ -159,7 +202,7 @@ webpackJsonp([3],{
 	            selector: 'app',
 	            encapsulation: core_1.ViewEncapsulation.None,
 	            styles: [
-	                __webpack_require__(756)
+	                __webpack_require__(755)
 	            ],
 	            template: "\n    <nav>\n      <span>\n        <a [routerLink]=\" ['./'] \">\n          Index\n        </a>\n      </span>\n      |\n      <span>\n        <a [routerLink]=\" ['./home'] \">\n          Home\n        </a>\n      </span>\n      |\n      <span>\n        <a [routerLink]=\" ['./about'] \">\n          About\n        </a>\n      </span>\n    </nav>\n\n    <main>\n      <router-outlet></router-outlet>\n    </main>\n\n    <pre class=\"app-state\">this.appState.state = {{ appState.state | json }}</pre>\n\n    <footer>\n      <span>Op proto</span>\n \n    </footer>\n  "
 	        }), 
@@ -189,7 +232,7 @@ webpackJsonp([3],{
 	// asyncRoutes is needed for our @angularclass/webpack-toolkit that will allow us to resolve
 	// the component correctly
 	exports.asyncRoutes = {
-	    'About': __webpack_require__(549)
+	    'About': __webpack_require__(548)
 	};
 	// Optimizations for initial loads
 	// An array of callbacks to be invoked after bootstrap to prefetch async routes
@@ -244,9 +287,9 @@ webpackJsonp([3],{
 	            // We need to tell Angular's compiler which custom pipes are in our template.
 	            pipes: [],
 	            // Our list of styles in our component. We may add more to compose many styles together
-	            styles: [__webpack_require__(757)],
+	            styles: [__webpack_require__(756)],
 	            // Every Angular template is first compiled by the browser before Angular runs it's compiler
-	            template: __webpack_require__(550)
+	            template: __webpack_require__(549)
 	        }), 
 	        __metadata('design:paramtypes', [app_service_1.AppState, title_1.Title])
 	    ], Home);
@@ -410,58 +453,6 @@ webpackJsonp([3],{
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	/*
-	 * Providers provided by Angular
-	 */
-	var platform_browser_dynamic_1 = __webpack_require__(355);
-	/*
-	* Platform and Environment
-	* our providers/directives/pipes
-	*/
-	var browser_1 = __webpack_require__(547);
-	var environment_1 = __webpack_require__(548);
-	/*
-	* App Component
-	* our top level component that holds all of our components
-	*/
-	var app_1 = __webpack_require__(543);
-	/*
-	 * Bootstrap our Angular app with a top level component `App` and inject
-	 * our Services and Providers into Angular's dependency injection
-	 */
-	function main(initialHmrState) {
-	    return platform_browser_dynamic_1.bootstrap(app_1.App, browser_1.PLATFORM_PROVIDERS.concat(environment_1.ENV_PROVIDERS, app_1.APP_PROVIDERS))
-	        .then(environment_1.decorateComponentRef)
-	        .catch(function (err) { return console.error(err); });
-	}
-	exports.main = main;
-	/*
-	 * Vendors
-	 * For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app
-	 * You can also import them in vendors to ensure that they are bundled in one file
-	 * Also see custom-typings.d.ts as you also need to do `typings install x` where `x` is your module
-	 */
-	/*
-	 * Hot Module Reload
-	 * experimental version by @gdi2290
-	 */
-	if (false) {
-	    // activate hot module reload
-	    var ngHmr = require('angular2-hmr');
-	    ngHmr.hotModuleReplacement(main, module);
-	}
-	else {
-	    // bootstrap when document is ready
-	    document.addEventListener('DOMContentLoaded', function () { return main(); });
-	}
-	
-
-/***/ },
-
-/***/ 547:
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
@@ -476,7 +467,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 548:
+/***/ 547:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -506,7 +497,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 549:
+/***/ 548:
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function (namespace) {
@@ -523,21 +514,21 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 550:
+/***/ 549:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"card-container\">\n  <h1 x-large class=\"sample-content\">Your Content Here</h1>\n\n\n  <hr>\n\n  <div>\n    For hot module reloading run\n    <pre>npm run start:hmr</pre>\n  </div>\n\n  <hr>\n\n  <div>\n    <h4>Local State</h4>\n\n    <form (ngSubmit)=\"submitState(localState.value)\" autocomplete=\"off\">\n\n      <input\n        [value]=\"localState.value\"\n        (input)=\"localState.value = $event.target.value\"\n        placeholder=\"Submit Local State to App State\"\n        autofocus>\n\n      <button md-raised-button color=\"primary\">Submit Value</button>\n    </form>\n    <!--\n        <input type=\"text\" [value]=\"localState.value\" (input)=\"localState.value = $event.target.value\" autofocus>\n        Rather than wiring up two-way data-binding ourselves with [value] and (input)\n        we can use Angular's [(ngModel)] syntax\n        <input type=\"text\" name=\"textInput\" [(ngModel)]=\"localState.value\" autofocus>\n      -->\n\n    <pre>this.localState = {{ localState | json }}</pre>\n\n  </div>\n\n</div>\n"
 
 /***/ },
 
-/***/ 756:
+/***/ 755:
 /***/ function(module, exports) {
 
 	module.exports = "html, body{\n  height: 100%;\n  font-family: Arial, Helvetica, sans-serif\n}\n\nspan.active {\n  background-color: gray;\n}\n"
 
 /***/ },
 
-/***/ 757:
+/***/ 756:
 /***/ function(module, exports) {
 
 	module.exports = "/*styles for home content only*/"
