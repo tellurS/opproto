@@ -1,0 +1,23 @@
+    <h1>Cars</h1>
+    <p-growl [value]="msgs"></p-growl>
+
+    <p-dataTable [value]="cars"  [rows]="10" [paginator]="true" [sortMode]="multiple"
+        selectionMode="multiple" [(selection)]="selectedCars"
+        [contextMenu]="cm"
+        [scrollable]="true" [resizableColumns]="true" [reorderableColumns]="true"
+        [responsive]="true">
+    
+        <header>List of Cars    
+            <span style="text-align:left">
+                <p-multiSelect [options]="columnOptions" [(ngModel)]="cols">
+                </p-multiSelect>
+            </span>
+        </header>
+        <footer>Count {{carsCount}}</footer>
+
+        <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header"  [sortable]="true"
+        [filter]="true"  [filterMatchMode]="contains">
+        </p-column>
+    </p-dataTable>
+    
+    <p-contextMenu #cm [model]="contextMenu"></p-contextMenu>
