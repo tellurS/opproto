@@ -8,6 +8,9 @@ import {InputText,DataTable,Button,Dialog,Column,Header,Footer} from 'primeng/pr
   styles: [`
   `],
   directives: [InputText,DataTable,Button,Dialog,Column,Header,Footer],
+  providers: [
+    CarService
+  ],
   template: `
     <h1>Cars</h1>\n\
 

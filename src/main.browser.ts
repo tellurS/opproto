@@ -33,6 +33,7 @@ export function main(initialHmrState?: any): Promise<any> {
 
 }
 
+require('scss/main.scss');
 
 
 
