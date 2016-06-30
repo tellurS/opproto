@@ -3,7 +3,7 @@
 
     <p-dataTable [value]="cars"  [rows]="2" [paginator]="true" [sortMode]="multiple"
         selectionMode="multiple" [(selection)]="selectedCars"
-        [contextMenu]="cm" expandableRows="true"  (onRowExpand)="detail($event)"
+        [contextMenu]="cm" expandableRows="true"  onRowExpands="detail($event)"
         [scrollable]="true" [resizableColumns]="true" [reorderableColumns]="true"
         [responsive]="true" (onLazyLoad)="loadServer($event)" [lazy]="true" [totalRecords]="carsCount" >
     
@@ -15,30 +15,8 @@
         </header>
         <footer>Count {{carsCount}}</footer>
     <template let-car>
-        <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-9">
-                    <div class="ui-grid ui-grid-responsive ui-grid-pad">
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-2 label">Vin: </div>
-                            <div class="ui-grid-col-10">{{car.vin}}</div>
-                        </div>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-2 label">Year: </div>
-                            <div class="ui-grid-col-10">{{car.year}}</div>
-                        </div>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-2 label">Brand: </div>
-                            <div class="ui-grid-col-10">{{car.id}}</div>
-                        </div>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-2 label">Color: </div>
-                            <div class="ui-grid-col-10">{{car.color}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       <carsDetail [id]="car.id">
+       </carsDetail>    
     </template>        
 
         <p-column expander="true" styleClass="col-icon"></p-column>

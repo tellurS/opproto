@@ -3,11 +3,12 @@ import {FORM_DIRECTIVES} from '@angular/common';
 
 import { CarService } from './car.service';
 import { Car } from './car';
+import { CarDetail } from './carDetail.component';
 import {InputText, DataTable, Button, Dialog, Column, Header, Footer, MenuItem,Growl,Message,ContextMenu,SelectItem,MultiSelect,LazyLoadEvent} from 'primeng/primeng';
 
 @Component({
     selector: 'cars',
-    directives: [InputText, DataTable, Button, Dialog, Column, Header, Footer,Growl,ContextMenu,MultiSelect],
+    directives: [InputText, DataTable, Button, Dialog, Column, Header, Footer,Growl,ContextMenu,MultiSelect,CarDetail],
     providers: [
         CarService
     ],
@@ -90,13 +91,7 @@ export class Cars{
             this.cars = cars;
             this.calulateLenght();
         });
-    };
-    detail(event) {
-        console.log(event);
-        
-        this.carService.getCar(event.data.id).subscribe(car => Object.assign(event.data,car));
-    }
-    
+    };   
         
  
 }
