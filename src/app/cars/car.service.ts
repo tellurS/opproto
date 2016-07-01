@@ -4,7 +4,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
 
-import { Car,CarColor } from './car';
+import { Car,CarColor,CarFull } from './car';
  import 'rxjs/Rx';
    
 @Injectable()
@@ -41,9 +41,13 @@ export class CarService {
         return Observable.of(this.carsData)
                .map(res => res.data.map(el => new Car(el))).delay(400); 
     }    
-    getCar(rId):Observable <Car> {      
-        return Observable.of(this.carsData)
-               .map(res => res.data.filter(el => el.id===rId)).delay(800); 
+    getCar(id):Observable <CarFull> {    
+         console.log("getCar:"+id);          
+         return Observable.of(this.carsData)
+               .map(
+                      res => (res.data.filter(el => el.id===id).map(el => new CarFull(el)))[0]
+               //res=>new CarFull(this.carsData.data[0])
+               ).delay(800); 
     }        
     getCarsSmallFilter(first:number,row:number):Observable <Car[]> {
         this.getCarsColor().subscribe(r=> Car.colors=r);

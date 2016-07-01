@@ -20,7 +20,14 @@ export class Car extends CarData{
         Object.assign(this, data);
     }
 }
-
+//------------------------------------------------------------------------------
+export class CarFull extends Car{    
+    full:boolean=true;
+    constructor(data:any) {         
+        super(data);        
+    }
+}
+//------------------------------------------------------------------------------
 export class CarColorData{
     colorId:number;
     color:string;
@@ -32,3 +39,4 @@ export class CarColor extends CarColorData{
         Object.assign(this, data);
     }
 }
+

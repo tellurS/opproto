@@ -1,7 +1,7 @@
 import { Component,Input } from '@angular/core';
 
 import { CarService } from './car.service';
-import { Car } from './car';
+import { CarFull } from './car';
 import {InputText, DataTable, Button, Dialog, Column, Header, Footer, MenuItem,Growl,Message,ContextMenu,SelectItem,MultiSelect,LazyLoadEvent} from 'primeng/primeng';
 
 @Component({
@@ -10,19 +10,19 @@ import {InputText, DataTable, Button, Dialog, Column, Header, Footer, MenuItem,G
     providers: [
         CarService
     ],
-    template: require('./carsDetail.html')
+    template: require('./carDetail.html')
 })
 export class CarDetail{
     @Input() id:Number;
-    car:Car;  
+    carFull:CarFull;  
     constructor(private carService: CarService) { }
 
     ngOnInit() {
+        this.load();
     }
     load() {
-        console.log("log",this.id);
-        this.carService.getCar(this.id).subscribe(car => this.car=car);
-       
+
+        this.carService.getCar(this.id).subscribe(car => this.carFull=car);      
     }
     
         
