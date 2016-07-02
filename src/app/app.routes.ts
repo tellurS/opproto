@@ -5,9 +5,10 @@ import { Cars } from './cars';
 import { NoContent } from './no-content';
 
 export const routes: RouterConfig = [
-  { path: '',      component: Home },
-  { path: 'home',  component: Home },
   { path: 'cars',  component: Cars },
+  //{ path: '',      terminal:true, redirectTo: 'cars'},
+  //------------
+  { path: 'home',  component: Home },
   // make sure you match the component type string to the require in asyncRoutes
   { path: 'about', component: 'About' },
   // async components with children routes must use WebpackAsyncRoute

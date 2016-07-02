@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FORM_DIRECTIVES} from '@angular/common';
+import { Router, ActivatedRoute } from "@angular/router"
 
 import { CarService } from './car.service';
 import { Car } from './car';
@@ -25,8 +25,11 @@ export class Cars{
     carsCount: Number;
     selectedCars: Car[];
     msgs: Message[];
+    sortField:string;
+    sortOrder:string;
+    multiSortMeta:any;
     
-    constructor(private carService: CarService) { }
+    constructor(private carService: CarService,private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit() {
         /*
@@ -51,7 +54,14 @@ export class Cars{
         for(let i = 0; i < this.cols.length; i++) {
                     this.columnOptions.push({label: this.cols[i].header, value: this.cols[i]});
         }   
-
+        
+        if(this.route.snapshot.params.field&&this.route.snapshot.params.order){
+            this.sortField=this.route.snapshot.params.field;
+            this.sortOrder=this.route.snapshot.params.order;
+        }
+        if(this.route.snapshot.params.multiSortMeta){
+            this.multiSortMeta=JSON.parse(this.route.snapshot.params.multiSortMeta);
+        }
     }
     calulateLenght(){
         this.carService.getCarsSmallCount().subscribe(count => this.carsCount=count);
@@ -91,6 +101,39 @@ export class Cars{
             this.calulateLenght();
         });
     };   
-        
  
+    param={};
+    open=[];
+    navigate(update:any) {
+        Object.assign(this.param, update||{});
+        this.router.navigate(["/cars", this.param]);        
+    }
+    /*onPage(event:any) {
+        console.log("onPage");         
+        this.navigate(event);
+    }*/    
+    onSort(event:any){
+        console.log("onSort"); 
+        this.navigate(event);
+    }
+    /*onFilter(event:any){
+        console.log("onFilter"); 
+        this.navigate({filters:JSON.stringify(event.filters)});
+    }    */
+    
+    detail(row:any,mode:boolean=true){        
+        console.log("detail",row,mode)
+        
+        if(this.open.indexOf(row.id)==-1&&mode)
+            this.open.push(row.id);
+        if(this.open.indexOf(row.id)>-1&&!mode)
+            this.open.splice(this.open.indexOf(row.id), 1);        
+            
+        this.navigate({open:this.open});
+    }     
+    /*todo
+     * clear
+     * expand,page,filter in pull request
+     * filter mode,filter templae in pull request
+    */
 }

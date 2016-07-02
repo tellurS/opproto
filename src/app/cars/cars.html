@@ -3,9 +3,11 @@
 
     <p-dataTable [value]="cars"  [rows]="2" [paginator]="true" [sortMode]="multiple"
         selectionMode="multiple" [(selection)]="selectedCars"
-        [contextMenu]="cm" expandableRows="true"  onRowExpands="detail($event)"
+        [contextMenu]="cm" expandableRows="true"  (onRowExpand)="detail($event,true)" (onRowCollapse)="detail($event,false)"
         [scrollable]="true" [resizableColumns]="true" [reorderableColumns]="true"
-        [responsive]="true" (onLazyLoad)="loadServer($event)" [lazy]="true" [totalRecords]="carsCount" >
+        [responsive]="true" (onLazyLoad)="loadServer($event)" [lazy]="true" [totalRecords]="carsCount" (onPage)="onPage($event)" (onSort)="onSort($event)" (onFilter)="onFilter($event)"
+        [sortField]="sortField" [sortOrder]="sortOrder" [multiSortMeta]="multiSortMeta"
+        >
     
         <header>List of Cars    
             <span style="text-align:left">
