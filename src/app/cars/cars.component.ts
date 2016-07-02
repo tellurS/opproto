@@ -50,8 +50,8 @@ export class Cars{
         this.columnOptions = [];
         for(let i = 0; i < this.cols.length; i++) {
                     this.columnOptions.push({label: this.cols[i].header, value: this.cols[i]});
-        }        
-                
+        }   
+
     }
     calulateLenght(){
         this.carService.getCarsSmallCount().subscribe(count => this.carsCount=count);
@@ -85,9 +85,8 @@ export class Cars{
         //event.sortField = Field name to sort with
         //event.sortOrder = Sort order as number, 1 for asc and -1 for dec
         //filters: FilterMetadata object having field as key and filter value, filter matchMode as value
- 
-        console.log("server request",event);
-        this.carService.getCarsSmallFilter(event.first,event.rows).subscribe(cars => {
+
+        this.carService.getCarsSmallFilter(event.first, event.rows, event.sortField, event.sortOrder, event.filters).subscribe(cars => {
             this.cars = cars;
             this.calulateLenght();
         });

@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
+import {URLSearchParams} from '@angular/http';
 
 import { Car,CarColor,CarFull } from './car';
  import 'rxjs/Rx';
@@ -49,7 +50,16 @@ export class CarService {
                //res=>new CarFull(this.carsData.data[0])
                ).delay(800); 
     }        
-    getCarsSmallFilter(first:number,row:number):Observable <Car[]> {
+    getCarsSmallFilter(first:number,row:number, sortField:string, sortOrder:number, filters:any):Observable <Car[]> {
+        let params = new URLSearchParams();
+        params.set('first', ''+first);
+        params.set('row', ''+row);
+        params.set('sortField', sortField);
+        params.set('sortOrder', ''+sortOrder);
+        params.set('filters', ''+JSON.stringify(filters));
+        console.log("getCarsSmallFilter",params.toString());
+        //this.http.get('/showcase/resources/data/cars-small.json',{ search: params });
+        
         this.getCarsColor().subscribe(r=> Car.colors=r);
         
         return Observable.of(this.carsData)
