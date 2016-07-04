@@ -5,7 +5,7 @@ import { CarFull } from './car';
 import {InputText, DataTable, Button, Dialog, Column, Header, Footer, MenuItem,Growl,Message,ContextMenu,SelectItem,MultiSelect,LazyLoadEvent} from 'primeng/primeng';
 
 @Component({
-    selector: 'carsDetail',
+    selector: 'carDetail',
     directives: [InputText, DataTable, Button, Dialog, Column, Header, Footer,Growl,ContextMenu,MultiSelect],
     providers: [
         CarService

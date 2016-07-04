@@ -54,13 +54,13 @@ export class Cars{
         for(let i = 0; i < this.cols.length; i++) {
                     this.columnOptions.push({label: this.cols[i].header, value: this.cols[i]});
         }   
-        
-        if(this.route.snapshot.params.field&&this.route.snapshot.params.order){
-            this.sortField=this.route.snapshot.params.field;
-            this.sortOrder=this.route.snapshot.params.order;
+        console.log(this.route.snapshot);
+        if(this.route.snapshot.params["field"]&&this.route.snapshot.params["order"]){
+            this.sortField=this.route.snapshot.params["field"];
+            this.sortOrder=this.route.snapshot.params["order"];
         }
-        if(this.route.snapshot.params.multiSortMeta){
-            this.multiSortMeta=JSON.parse(this.route.snapshot.params.multiSortMeta);
+        if(this.route.snapshot.params["multiSortMeta"]){
+            this.multiSortMeta=JSON.parse(this.route.snapshot.params["multiSortMeta"]);
         }
     }
     calulateLenght(){
@@ -108,18 +108,18 @@ export class Cars{
         Object.assign(this.param, update||{});
         this.router.navigate(["/cars", this.param]);        
     }
-    /*onPage(event:any) {
+    onPage(event:any) {
         console.log("onPage");         
         this.navigate(event);
-    }*/    
+    }    
     onSort(event:any){
         console.log("onSort"); 
         this.navigate(event);
     }
-    /*onFilter(event:any){
+    onFilter(event:any){
         console.log("onFilter"); 
         this.navigate({filters:JSON.stringify(event.filters)});
-    }    */
+    }   
     
     detail(row:any,mode:boolean=true){        
         console.log("detail",row,mode)
